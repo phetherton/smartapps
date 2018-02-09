@@ -2,6 +2,7 @@ preferences {
         input("token", "string", title:"Authentication Token", description: "Authentication Token", required: true, displayDuringSetup: true)
         input("deviceID", "string", title:"Device ID", description: "Device ID", required: true, displayDuringSetup: true)
 }
+// date 2/9/2018
 metadata {
         // Automatically generated. Make future change here.
         definition (name: "TANKUTILITY", author: "Patrick Hetherton/Zach Armstrong") {
