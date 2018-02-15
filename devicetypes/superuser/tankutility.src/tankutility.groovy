@@ -48,11 +48,9 @@ metadata {
                         [value: 1, color: "#bc2323"],
                         [value: 0, color: "#44b621"]
                         ] 
-                        )  
-                        
-                        }
-                         
-                                             
+                        )  }
+         
+                                      
                 valueTile(      "reading", "device.reading",width: 3,  height:  2) {
                         state("device.reading",bacgroundColor: "#00a0dc", label:'${currentValue}                          Last Reading')
                 }
@@ -65,11 +63,9 @@ metadata {
                         state "default", label:'refresh', action:"refresh.refresh", icon:"st.secondary.refresh-icon"
                 }
                 
-               
-             
-               
+          
                 main(["level"])
-                details(["temperature","level", "reading", "SystemHealth","refresh"])
+                details(["level", "reading", "SystemHealth","refresh"])
                     }             
       }
 
