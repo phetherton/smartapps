@@ -16,15 +16,24 @@ definition(
     author: "Patrick Hetherton",
     description: "Get an alert when Gas tank is low",
     category: "My Apps",
-    iconUrl: "https://s3.amazonaws.com/smartapp-icons/Meta/text.png",
-    iconX2Url: "https://s3.amazonaws.com/smartapp-icons/Meta/text@2x.png",
-    iconX3Url: "https://s3.amazonaws.com/smartapp-icons/Meta/text@2x.png",
+//    iconUrl:   "https://s3.amazonaws.com/smartapp-icons/Meta/text.png",
+ //   iconX2Url: "https://s3.amazonaws.com/smartapp-icons/Meta/text@2x.png",
+//    iconX3Url: "https://s3.amazonaws.com/smartapp-icons/Meta/text@2x.png",
+   
     //pausable: true
 )
 
+//"https://github.com/phetherton/smartapps/blob/master/Tank-Utility-Alert/Cabin.jpg",
+//"https://github.com/phetherton/smartapps/blob/master/Tank-Utility-Alert/SC_LOGO.png", 
+// "https://github.com/phetherton/smartapps/blob/master/Tank-Utility-Alert/SC_LOGO.png",
+
+//"https://s3.amazonaws.com/smartapp-icons/Meta/text.png",
+//"https://s3.amazonaws.com/smartapp-icons/Meta/text@2x.png",
+//"https://s3.amazonaws.com/smartapp-icons/Meta/text@2x.png",
+
 preferences {
 	section {
-     	input(name: "GasMeter", type: "capability.Sensor", title: "When This Gas Tank...", required: true,displayDuringSetup: true)
+     	input(name: "GasMeter", type: "capability.Energy Meter", title: "When This Gas Tank...", required: true,displayDuringSetup: true)
         input(name: "SystemHealthAlert", type: "number", title: "Hasn't reported in...", required: true, description: "Days.")
         input(name: "levelAlert", type: "number", title: "Gas Level...", required: true, description: "is below 30%.") }
         
@@ -39,12 +48,14 @@ preferences {
 
 def installed() {
 	log.debug "Installed with settings: ${settings}"
-	initialize()
+     runEvery3Hours(initialize)
+//	initialize()
 }
 
 def updated() {
 	log.debug "Updated with settings: ${settings}"
-	initialize()
+	runEvery3Hours(initialize)
+  //  initialize()
  
 }
 def initialize() {
